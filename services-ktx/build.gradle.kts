@@ -4,6 +4,8 @@ plugins {
     kotlin("android")
 }
 
+group = "com.github.Zhuinden"
+
 android {
     compileSdkVersion(28)
 

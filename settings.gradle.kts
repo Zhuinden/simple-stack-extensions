@@ -1,4 +1,4 @@
-include(":example:example")
+include(":example")
 include(":fragments")
 include(":fragments-ktx")
 include(":navigator-ktx")

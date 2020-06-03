@@ -3,6 +3,8 @@ plugins {
     id("com.github.dcendents.android-maven")
 }
 
+group = "com.github.Zhuinden"
+
 android {
     compileSdkVersion(28)
 

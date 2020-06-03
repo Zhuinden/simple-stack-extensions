@@ -6,9 +6,9 @@ import com.zhuinden.simplestackextensions.fragments.KeyedFragment
 import com.zhuinden.simplestackextensions.fragmentsktx.lookup
 import com.zhuinden.simplestackextensionsample.R
 import com.zhuinden.simplestackextensionsample.utils.get
-import com.zhuinden.simplestackextensionsample.utils.set
 import com.zhuinden.simplestackextensionsample.utils.onClick
 import com.zhuinden.simplestackextensionsample.utils.onTextChanged
+import com.zhuinden.simplestackextensionsample.utils.set
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.rxkotlin.addTo
 import io.reactivex.rxkotlin.subscribeBy
