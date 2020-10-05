@@ -42,5 +42,5 @@ val View.backstack: Backstack
 /**
  * Returns the content frame of the Activity.
  */
-val Activity.contentFrame: ViewGroup
+val Activity.androidContentFrame: ViewGroup
     get() = findViewById(Window.ID_ANDROID_CONTENT)

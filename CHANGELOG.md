@@ -12,7 +12,7 @@ Previously, this would have needed a `handler.post {` on the user's side, but th
 
 Now, the `DefaultFragmentStateChanger` postpones the FragmentTransaction for the next event loop.
 
-- Add `Activity.contentFrame` to `navigator-ktx`.
+- Add `Activity.androidContentFrame` to `navigator-ktx`.
 
 -Simple Stack Extensions 2.0.0 (2020-06-03)
 --------------------------------
