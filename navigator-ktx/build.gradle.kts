@@ -37,7 +37,7 @@ android {
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
-    api("com.github.Zhuinden:simple-stack:2.3.2")
+    api("com.github.Zhuinden:simple-stack:2.4.0")
     api("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
 
     testImplementation("junit:junit:4.13")

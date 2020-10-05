@@ -35,8 +35,8 @@ android {
 
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
-    api("com.github.Zhuinden:simple-stack:2.3.2")
-    api("androidx.fragment:fragment:1.2.4")
+    api("com.github.Zhuinden:simple-stack:2.4.0")
+    api("androidx.fragment:fragment:1.2.5")
     api("androidx.core:core:1.3.0")
 
     testImplementation("junit:junit:4.13")

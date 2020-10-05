@@ -35,7 +35,8 @@ android {
 
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
-    api("com.github.Zhuinden:simple-stack:2.3.2")
+    api("com.github.Zhuinden:simple-stack:2.4.0")
+    api("androidx.annotation:annotation:1.1.0")
 
     testImplementation("junit:junit:4.13")
     testImplementation("org.assertj:assertj-core:3.11.1")
