@@ -95,3 +95,18 @@ inline fun <reified T> GlobalServices.Builder.add(service: T, serviceTag: String
  */
 inline fun <reified NAME> GlobalServices.Builder.rebind(service: Any, serviceTag: String = NAME::class.java.name): GlobalServices.Builder =
     addAlias(serviceTag, service)
+
+/**
+ * Get the service from the global services.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T> GlobalServices.get(serviceTag: String = T::class.java.name): T = getService(serviceTag)
+
+/**
+ * Get the service from the global services. Returns null if not found.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T> GlobalServices.getOrNull(serviceTag: String = T::class.java.name): T? =
+    takeIf { it.hasService(serviceTag) }?.get<T>(serviceTag)
