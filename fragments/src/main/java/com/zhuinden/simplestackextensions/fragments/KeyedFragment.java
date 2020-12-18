@@ -18,6 +18,8 @@ package com.zhuinden.simplestackextensions.fragments;
 import androidx.annotation.LayoutRes;
 import androidx.fragment.app.Fragment;
 
+import javax.annotation.Nonnull;
+
 /**
  * A default base fragment that contains a method to get the key from the arguments.
  */
@@ -44,7 +46,14 @@ public abstract class KeyedFragment extends Fragment {
      * @param <T> the type of the key
      * @return the key
      */
+    @Nonnull
     public final <T extends DefaultFragmentKey> T getKey() {
-        return requireArguments().getParcelable(DefaultFragmentKey.ARGS_KEY);
+        final T key = requireArguments().getParcelable(DefaultFragmentKey.ARGS_KEY);
+
+        if(key == null) {
+            throw new NullPointerException("The key provided as fragment argument should not be null!");
+        }
+
+        return key;
     }
 }

@@ -20,6 +20,8 @@ import android.os.Parcelable;
 
 import androidx.fragment.app.Fragment;
 
+import javax.annotation.Nonnull;
+
 /**
  * Default fragment key for the {@link DefaultFragmentStateChanger}.
  */
@@ -38,6 +40,7 @@ public abstract class DefaultFragmentKey implements Parcelable {
      *
      * @return the fragment tag
      */
+    @Nonnull
     public String getFragmentTag() {
         return getClass().getName();
     }
@@ -47,6 +50,7 @@ public abstract class DefaultFragmentKey implements Parcelable {
      *
      * @return the new instance of fragment
      */
+    @Nonnull
     protected abstract Fragment instantiateFragment();
 
     /**
@@ -54,6 +58,7 @@ public abstract class DefaultFragmentKey implements Parcelable {
      *
      * @return the new fragment instance
      */
+    @Nonnull
     public final Fragment createFragment() {
         Fragment fragment = instantiateFragment();
         Bundle args = fragment.getArguments();

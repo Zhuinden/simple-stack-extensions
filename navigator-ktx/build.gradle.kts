@@ -29,16 +29,15 @@ android {
     }
 
     compileOptions {
-        this.setSourceCompatibility(JavaVersion.VERSION_1_7)
-        this.setTargetCompatibility(JavaVersion.VERSION_1_7)
+        this.sourceCompatibility(JavaVersion.VERSION_1_7)
+        this.targetCompatibility(JavaVersion.VERSION_1_7)
     }
 }
 
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
-    api("com.github.Zhuinden:simple-stack:2.4.0")
-    api("org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.3.72")
+    api("com.github.Zhuinden:simple-stack:2.5.0")
 
     testImplementation("junit:junit:4.13")
     testImplementation("org.assertj:assertj-core:3.11.1")
@@ -56,7 +55,7 @@ val sourcesJar by tasks.registering(Jar::class) {
 
 val javadoc by tasks.registering(Javadoc::class) {
     isFailOnError = false
-    source = android.sourceSets["main"].java.sourceFiles
+    source = android.sourceSets["main"].java.getSourceFiles()
     classpath += project.files(android.bootClasspath.joinToString(separator = File.pathSeparator))
     classpath += configurations.compile
 }

@@ -28,6 +28,7 @@ import com.zhuinden.simplestack.StateChange;
 import java.util.List;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 
 /**
  * The default fragment state changer uses `attach` and `detach` to navigate between fragments.
@@ -35,10 +36,10 @@ import javax.annotation.Nonnull;
  * Also sets the {@link DefaultFragmentKey} in the arguments using {@link DefaultFragmentKey#ARGS_KEY} as the argument key.
  */
 public class DefaultFragmentStateChanger {
-    private Handler handler = new Handler(Looper.getMainLooper());
+    private final Handler handler = new Handler(Looper.getMainLooper());
 
-    private final FragmentManager fragmentManager;
-    private final int containerId;
+    protected final FragmentManager fragmentManager;
+    protected final int containerId;
 
     /**
      * Constructor.
@@ -112,6 +113,17 @@ public class DefaultFragmentStateChanger {
     }
 
     /**
+     * Overriding this callback allows for additional configurations to be made to the FragmentTransaction.
+     *
+     * @param fragmentTransaction the fragment transaction
+     * @param topPreviousFragment the top previous fragment
+     * @param topNewFragment the top new fragment (might not be added yet!)
+     * @param stateChange the state change
+     */
+    protected void configureFragmentTransaction(@Nonnull FragmentTransaction fragmentTransaction, @Nullable Fragment topPreviousFragment, @Nonnull Fragment topNewFragment, @Nonnull StateChange stateChange) {
+    }
+
+    /**
      * Handles the transition from one state to another, swapping fragments.
      *
      * @param stateChange the state change
@@ -151,6 +163,23 @@ public class DefaultFragmentStateChanger {
             onReplaceNavigation(fragmentTransaction, stateChange);
         }
 
+        DefaultFragmentKey topPreviousKey = stateChange.topPreviousKey();
+        Fragment topPreviousFragment = null;
+
+        if(topPreviousKey != null) {
+            topPreviousFragment = fragmentManager.findFragmentByTag(topPreviousKey.getFragmentTag());
+        }
+
+        DefaultFragmentKey topNewKey = stateChange.topNewKey();
+
+        Fragment topNewFragment = fragmentManager.findFragmentByTag(topNewKey.getFragmentTag());
+
+        if(topNewFragment == null || topNewFragment.isRemoving()) {
+            topNewFragment = topNewKey.createFragment(); // create new fragment here, ahead of time
+        }
+
+        configureFragmentTransaction(fragmentTransaction, topPreviousFragment, topNewFragment, stateChange);
+
         List<DefaultFragmentKey> previousKeys = stateChange.getPreviousKeys();
         List<DefaultFragmentKey> newKeys = stateChange.getNewKeys();
         for(DefaultFragmentKey oldKey : previousKeys) {
@@ -164,17 +193,17 @@ public class DefaultFragmentStateChanger {
             }
         }
         for(DefaultFragmentKey newKey : newKeys) {
-            Fragment fragment = fragmentManager.findFragmentByTag(newKey.getFragmentTag());
+            final Fragment fragment = fragmentManager.findFragmentByTag(newKey.getFragmentTag());
             if(newKey.equals(stateChange.topNewKey())) {
                 if(fragment != null) {
                     if(fragment.isRemoving()) { // fragments are quirky, they die asynchronously. Ignore if they're still there.
-                        fragmentTransaction.replace(containerId, newKey.createFragment(), newKey.getFragmentTag());
+                        fragmentTransaction.replace(containerId, topNewFragment, newKey.getFragmentTag());
                     } else if(isNotShowing(fragment)) {
                         startShowing(fragmentTransaction, fragment);
                     }
                 } else {
-                    fragment = newKey.createFragment(); // create and add new top if did not exist
-                    fragmentTransaction.add(containerId, fragment, newKey.getFragmentTag());
+                    // add the newly created fragment if it's not there yet
+                    fragmentTransaction.add(containerId, topNewFragment, newKey.getFragmentTag());
                 }
             } else {
                 if(fragment != null && !isNotShowing(fragment)) {

@@ -1,4 +1,5 @@
-include(":example")
+include(":example-extensions")
+include(":example-sharedelement")
 include(":fragments")
 include(":fragments-ktx")
 include(":navigator-ktx")

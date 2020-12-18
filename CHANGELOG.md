@@ -1,5 +1,15 @@
 # Change log
 
+-Simple Stack Extensions 2.1.0 (2020-XX-XX)
+--------------------------------
+- Added `configureFragmentTransaction()` method to `DefaultFragmentStateChanger`, making it more customizable.
+
+- Added `example-sharedelements` using `configureFragmentTransaction()` which handles a shared element transaction with fragments.
+
+- Added some missing `@Nonnull`s in `DefaultFragmentKey` and `KeyedFragment`.
+
+- Update Kotlin to 1.4.21.
+
 -Simple Stack Extensions 2.0.1 (2020-10-05)
 --------------------------------
 - `services` now depends on `androidx.annotation.annotation:1.1.0`.
