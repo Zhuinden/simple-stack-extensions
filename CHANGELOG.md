@@ -1,6 +1,6 @@
 # Change log
 
--Simple Stack Extensions 2.1.0 (2020-02-18)
+-Simple Stack Extensions 2.1.0 (2020-12-18)
 --------------------------------
 - Added `GlobalServices.get()` and `GlobalServices.getOrNull()` to `services-ktx`.
 
