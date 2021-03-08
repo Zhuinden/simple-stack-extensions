@@ -32,5 +32,5 @@ val Fragment.backstack: Backstack
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> Fragment.lookup(serviceTag: String = T::class.java.name): T =
+inline fun <reified T: Any> Fragment.lookup(serviceTag: String = T::class.java.name): T =
     backstack.lookupService(serviceTag)

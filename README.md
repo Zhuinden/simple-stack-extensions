@@ -36,22 +36,24 @@ and then, add the dependency to your module's `build.gradle.kts` (or `build.grad
 
 ``` kotlin
 // build.gradle.kts
-implementation("com.github.Zhuinden.simple-stack-extensions:fragments:2.1.0")
-implementation("com.github.Zhuinden.simple-stack-extensions:fragments-ktx:2.1.0")
-implementation("com.github.Zhuinden.simple-stack-extensions:navigator-ktx:2.1.0")
-implementation("com.github.Zhuinden.simple-stack-extensions:services:2.1.0")
-implementation("com.github.Zhuinden.simple-stack-extensions:services-ktx:2.1.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:core-ktx:2.2.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:fragments:2.2.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:fragments-ktx:2.2.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:navigator-ktx:2.2.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:services:2.2.0")
+implementation("com.github.Zhuinden.simple-stack-extensions:services-ktx:2.2.0")
 ```
 
 or
 
 ``` groovy
 // build.gradle
-implementation 'com.github.Zhuinden.simple-stack-extensions:fragments:2.1.0'
-implementation 'com.github.Zhuinden.simple-stack-extensions:fragments-ktx:2.1.0'
-implementation 'com.github.Zhuinden.simple-stack-extensions:navigator-ktx:2.1.0'
-implementation 'com.github.Zhuinden.simple-stack-extensions:services:2.1.0'
-implementation 'com.github.Zhuinden.simple-stack-extensions:services-ktx:2.1.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:core-ktx:2.2.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:fragments:2.2.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:fragments-ktx:2.2.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:navigator-ktx:2.2.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:services:2.2.0'
+implementation 'com.github.Zhuinden.simple-stack-extensions:services-ktx:2.2.0'
 ```
 
 ## What does it do?
@@ -62,7 +64,7 @@ Check out the `example` app, based on the FTUE sample from Tutorial Step 9.
 
 ## License
 
-    Copyright 2017-2020 Gabor Varadi
+    Copyright 2017-2021 Gabor Varadi
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.

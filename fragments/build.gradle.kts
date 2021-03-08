@@ -35,16 +35,16 @@ android {
 
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
-    api("com.github.Zhuinden:simple-stack:2.5.0")
-    api("androidx.fragment:fragment:1.2.5")
+    api("com.github.Zhuinden:simple-stack:2.6.0")
+    api("androidx.fragment:fragment:1.3.0")
     api("androidx.core:core:1.3.2")
 
-    testImplementation("junit:junit:4.13")
-    testImplementation("org.assertj:assertj-core:3.11.1")
-    testImplementation("org.mockito:mockito-core:2.19.0")
+    testImplementation("junit:junit:4.13.2")
+    testImplementation("org.assertj:assertj-core:3.16.1")
+    testImplementation("org.mockito:mockito-core:3.8.0")
     testImplementation("org.robolectric:robolectric:4.2.1")
     testImplementation("org.apache.maven:maven-ant-tasks:2.1.3")
-    androidTestImplementation("junit:junit:4.13")
+    androidTestImplementation("junit:junit:4.13.2")
 }
 
 // build a jar with source files

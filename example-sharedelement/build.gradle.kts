@@ -32,10 +32,11 @@ android {
 
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
+    api(project(":core-ktx"))
     api(project(":fragments"))
     api(project(":fragments-ktx"))
 
-    implementation("com.github.Zhuinden:simple-stack:2.5.0")
+    implementation("com.github.Zhuinden:simple-stack:2.6.0")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")

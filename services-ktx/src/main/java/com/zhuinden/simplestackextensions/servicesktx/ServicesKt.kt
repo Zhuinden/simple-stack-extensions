@@ -24,21 +24,21 @@ import com.zhuinden.simplestack.ServiceBinder
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> Backstack.canFind(serviceTag: String = T::class.java.name): Boolean = canFindService(serviceTag)
+inline fun <reified T: Any> Backstack.canFind(serviceTag: String = T::class.java.name): Boolean = canFindService(serviceTag)
 
 /**
  * Look up the service using the provided service tag.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> Backstack.lookup(serviceTag: String = T::class.java.name): T = lookupService<T>(serviceTag)
+inline fun <reified T: Any> Backstack.lookup(serviceTag: String = T::class.java.name): T = lookupService<T>(serviceTag)
 
 /**
  * Add the service to the service binder in the given scope.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> ServiceBinder.add(service: T, serviceTag: String = T::class.java.name) {
+inline fun <reified T: Any> ServiceBinder.add(service: T, serviceTag: String = T::class.java.name) {
     this.addService(serviceTag, service as Any)
 }
 
@@ -47,7 +47,7 @@ inline fun <reified T> ServiceBinder.add(service: T, serviceTag: String = T::cla
  *
  * Uses the fully qualified name of the provided generic type argument as the default tag.
  */
-inline fun <reified NAME> ServiceBinder.rebind(service: Any, aliasTag: String = NAME::class.java.name) {
+inline fun <reified NAME: Any> ServiceBinder.rebind(service: Any, aliasTag: String = NAME::class.java.name) {
     this.addAlias(aliasTag, service)
 }
 
@@ -56,28 +56,28 @@ inline fun <reified NAME> ServiceBinder.rebind(service: Any, aliasTag: String = 
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> ServiceBinder.canFind(serviceTag: String = T::class.java.name): Boolean = canFindService(serviceTag)
+inline fun <reified T: Any> ServiceBinder.canFind(serviceTag: String = T::class.java.name): Boolean = canFindService(serviceTag)
 
 /**
  * Look up the service from the service binder.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> ServiceBinder.lookup(serviceTag: String = T::class.java.name): T = lookupService(serviceTag)
+inline fun <reified T: Any> ServiceBinder.lookup(serviceTag: String = T::class.java.name): T = lookupService(serviceTag)
 
 /**
  * Get the service from the service binder's current scope.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> ServiceBinder.get(serviceTag: String = T::class.java.name): T = getService(serviceTag)
+inline fun <reified T: Any> ServiceBinder.get(serviceTag: String = T::class.java.name): T = getService(serviceTag)
 
 /**
  * Get the service from the service binder's current scope. Returns null if not found.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> ServiceBinder.getOrNull(serviceTag: String = T::class.java.name): T? =
+inline fun <reified T: Any> ServiceBinder.getOrNull(serviceTag: String = T::class.java.name): T? =
     takeIf { it.hasService(serviceTag) }?.get<T>(serviceTag)
 
 /**
@@ -85,7 +85,7 @@ inline fun <reified T> ServiceBinder.getOrNull(serviceTag: String = T::class.jav
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> GlobalServices.Builder.add(service: T, serviceTag: String = T::class.java.name): GlobalServices.Builder =
+inline fun <reified T: Any> GlobalServices.Builder.add(service: T, serviceTag: String = T::class.java.name): GlobalServices.Builder =
     addService(serviceTag, service as Any)
 
 /**
@@ -93,7 +93,7 @@ inline fun <reified T> GlobalServices.Builder.add(service: T, serviceTag: String
  *
  * Uses the fully qualified name of the generic type argument as the default tag.
  */
-inline fun <reified NAME> GlobalServices.Builder.rebind(service: Any, serviceTag: String = NAME::class.java.name): GlobalServices.Builder =
+inline fun <reified NAME: Any> GlobalServices.Builder.rebind(service: Any, serviceTag: String = NAME::class.java.name): GlobalServices.Builder =
     addAlias(serviceTag, service)
 
 /**
@@ -101,12 +101,12 @@ inline fun <reified NAME> GlobalServices.Builder.rebind(service: Any, serviceTag
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> GlobalServices.get(serviceTag: String = T::class.java.name): T = getService(serviceTag)
+inline fun <reified T: Any> GlobalServices.get(serviceTag: String = T::class.java.name): T = getService(serviceTag)
 
 /**
  * Get the service from the global services. Returns null if not found.
  *
  * Uses the fully qualified name of the class as the default tag.
  */
-inline fun <reified T> GlobalServices.getOrNull(serviceTag: String = T::class.java.name): T? =
+inline fun <reified T: Any> GlobalServices.getOrNull(serviceTag: String = T::class.java.name): T? =
     takeIf { it.hasService(serviceTag) }?.get<T>(serviceTag)
