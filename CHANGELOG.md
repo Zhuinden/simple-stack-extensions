@@ -1,5 +1,13 @@
 # Change log
 
+-Simple Stack Extensions 2.2.1 (2021-05-06)
+--------------------------------
+- No significant changes.
+
+- Update simple-stack to 2.6.1.
+
+- Update Kotlin to 1.4.32.
+
 -Simple Stack Extensions 2.2.0 (2021-03-08)
 --------------------------------
 - Added `core-ktx` module with the following new extensions:
