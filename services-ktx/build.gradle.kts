@@ -37,7 +37,7 @@ android {
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
-    api("com.github.Zhuinden:simple-stack:2.6.2")
+    api("com.github.Zhuinden:simple-stack:2.6.3")
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.assertj:assertj-core:3.16.1")
     testImplementation("org.mockito:mockito-core:3.8.0")
@@ -53,10 +53,13 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 
 val javadoc by tasks.registering(Javadoc::class) {
+    configurations.implementation.get().isCanBeResolved = true
+    configurations.api.get().isCanBeResolved = true
+
     isFailOnError = false
     source = android.sourceSets["main"].java.getSourceFiles()
     classpath += project.files(android.bootClasspath.joinToString(separator = File.pathSeparator))
-    classpath += configurations.compile
+    classpath += configurations.api
 }
 
 // build a jar with javadoc

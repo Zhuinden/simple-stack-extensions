@@ -1,5 +1,11 @@
 # Change log
 
+-Simple Stack Extensions 2.2.3 (2022-04-21)
+--------------------------------
+- No significant changes.
+
+- Update simple-stack to 2.6.3.
+
 -Simple Stack Extensions 2.2.2 (2021-06-07)
 --------------------------------
 - No significant changes.

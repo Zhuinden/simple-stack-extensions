@@ -36,7 +36,7 @@ dependencies {
     api(project(":fragments"))
     api(project(":fragments-ktx"))
 
-    implementation("com.github.Zhuinden:simple-stack:2.6.2")
+    implementation("com.github.Zhuinden:simple-stack:2.6.3")
     implementation("androidx.appcompat:appcompat:1.2.0")
     implementation("androidx.recyclerview:recyclerview:1.1.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
