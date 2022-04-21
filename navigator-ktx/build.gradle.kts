@@ -1,7 +1,7 @@
 plugins {
     id("com.android.library")
-    id("com.github.dcendents.android-maven")
     kotlin("android")
+    id("maven-publish")
 }
 
 group = "com.github.Zhuinden"
@@ -13,7 +13,7 @@ android {
         minSdkVersion(11)
         targetSdkVersion(28)
         versionCode = 1
-        versionName = "2.0.0"
+        versionName = "2.6.3"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
     }
 
@@ -54,10 +54,13 @@ val sourcesJar by tasks.registering(Jar::class) {
 }
 
 val javadoc by tasks.registering(Javadoc::class) {
+    configurations.implementation.get().isCanBeResolved = true
+    configurations.api.get().isCanBeResolved = true
+
     isFailOnError = false
     source = android.sourceSets["main"].java.getSourceFiles()
     classpath += project.files(android.bootClasspath.joinToString(separator = File.pathSeparator))
-    classpath += configurations.compile
+    classpath += configurations.api
 }
 
 // build a jar with javadoc
@@ -70,4 +73,17 @@ val javadocJar by tasks.registering(Jar::class) {
 artifacts {
     archives(sourcesJar)
     archives(javadocJar)
+}
+
+publishing {
+    publications {
+        register("mavenJava", MavenPublication::class) {
+            groupId = "com.github.Zhuinden.simple-stack-extensions"
+            artifactId = "navigator-ktx"
+            version = "2.6.3"
+
+            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
+            artifact(sourcesJar.get())
+        }
+    }
 }
