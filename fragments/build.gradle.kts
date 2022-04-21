@@ -3,8 +3,6 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.Zhuinden.simple-stack-extensions"
-
 android {
     compileSdkVersion(31)
 
