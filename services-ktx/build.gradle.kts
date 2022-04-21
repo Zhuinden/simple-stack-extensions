@@ -7,11 +7,11 @@ plugins {
 group = "com.github.Zhuinden"
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(30)
 
     defaultConfig {
         minSdkVersion(1)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionCode = 1
         versionName = "2.6.3"
         testInstrumentationRunner = "android.support.test.runner.AndroidJUnitRunner"
@@ -74,15 +74,12 @@ artifacts {
     archives(javadocJar)
 }
 
-publishing {
-    publications {
-        register("mavenJava", MavenPublication::class) {
-            groupId = "com.github.Zhuinden.simple-stack-extensions"
-            artifactId = "services-ktx"
-            version = "2.6.3"
-
-            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
-            artifact(sourcesJar.get())
+afterEvaluate {
+    publishing {
+        publications {
+            register("mavenJava", MavenPublication::class) {
+                from(components.findByName("release"))
+            }
         }
     }
 }

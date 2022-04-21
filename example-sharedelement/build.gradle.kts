@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(28)
+    compileSdkVersion(30)
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.example.fragmenttransitions"
         minSdkVersion(16)
-        targetSdkVersion(28)
+        targetSdkVersion(30)
         versionCode = 1
         versionName = "1.0"
     }
