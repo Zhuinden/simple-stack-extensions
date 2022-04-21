@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.2.3"
+version = "2.2.4"
 
 android {
     compileSdkVersion(31)
@@ -37,7 +37,9 @@ android {
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
-    api("com.github.Zhuinden:simple-stack:2.6.3")
+    api("com.github.Zhuinden:simple-stack:2.6.4") {
+        isTransitive = true
+    }
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.assertj:assertj-core:3.16.1")
     testImplementation("org.mockito:mockito-core:3.8.0")
@@ -80,10 +82,33 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "services-ktx"
-                version = "2.2.3"
+                version = "2.2.4"
 
                 from(components["release"])
                 artifact(sourcesJar.get())
+
+                pom.withXml {
+                    val dependenciesNode: groovy.util.Node =
+                        (asNode().get("dependencies") as groovy.util.NodeList).get(0) as groovy.util.Node
+                    val configurationNames = arrayOf("implementation", "api")
+
+                    configurationNames.forEach { configurationName ->
+                        configurations[configurationName].allDependencies.forEach {
+                            if (it.group != null && it.version != "unspecified") {
+                                val dependencyNode = dependenciesNode.appendNode("dependency")
+                                dependencyNode.appendNode("groupId", it.group)
+                                dependencyNode.appendNode("artifactId", it.name)
+                                dependencyNode.appendNode("version", it.version)
+                                // dependencyNode.appendNode("scope", configurationName)
+                            }
+                        }
+                    }
+
+                    val dependencyNode = dependenciesNode.appendNode("dependency")
+                    dependencyNode.appendNode("groupId", "com.github.Zhuinden")
+                    dependencyNode.appendNode("artifactId", "state-bundle")
+                    dependencyNode.appendNode("version", "1.4.0")
+                }
             }
         }
     }

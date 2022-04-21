@@ -41,8 +41,10 @@ dependencies {
     api(project(":services"))
     api(project(":services-ktx"))
 
-    implementation 'com.github.Zhuinden:simple-stack:2.6.3'
-    implementation 'com.github.Zhuinden:state-bundle:1.4.0'
+    implementation('com.github.Zhuinden:simple-stack:2.6.4') {
+        transitive = true
+    }
+
     implementation 'com.github.Zhuinden:event-emitter:1.2.0'
     implementation 'com.github.Zhuinden:rx-combinetuple-kt:1.2.1'
 

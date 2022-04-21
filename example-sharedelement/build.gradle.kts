@@ -36,15 +36,17 @@ dependencies {
     api(project(":fragments"))
     api(project(":fragments-ktx"))
 
-    implementation("com.github.Zhuinden:simple-stack:2.6.3")
-    implementation("androidx.appcompat:appcompat:1.2.0")
-    implementation("androidx.recyclerview:recyclerview:1.1.0")
+    implementation("com.github.Zhuinden:simple-stack:2.6.4") {
+        isTransitive = true
+    }
+    implementation("androidx.appcompat:appcompat:1.4.1")
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
-    compileOnly("com.google.auto.value:auto-value:1.5.2")
-    annotationProcessor("com.google.auto.value:auto-value:1.5.2")
+    compileOnly("com.google.auto.value:auto-value:1.6.5")
+    annotationProcessor("com.google.auto.value:auto-value:1.6.5")
     implementation("nz.bradcampbell:paperparcel:2.0.4")
     annotationProcessor("nz.bradcampbell:paperparcel-compiler:2.0.4")
     annotationProcessor("com.github.reggar:auto-value-ignore-hash-equals:1.1.4")
-    implementation("com.google.dagger:dagger:2.29.1")
-    annotationProcessor("com.google.dagger:dagger-compiler:2.29.1")
+    implementation("com.google.dagger:dagger:2.41")
+    annotationProcessor("com.google.dagger:dagger-compiler:2.41")
 }
