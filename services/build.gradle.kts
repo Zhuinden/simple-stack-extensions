@@ -3,6 +3,9 @@ plugins {
     id("maven-publish")
 }
 
+group = "com.github.Zhuinden.simple-stack-extensions"
+version = "2.2.3"
+
 android {
     compileSdkVersion(31)
 
@@ -73,33 +76,35 @@ artifacts {
     archives(javadocJar)
 }
 
-publishing {
-    publications {
-        register("mavenJava", MavenPublication::class) {
-            groupId = "com.github.Zhuinden.simple-stack-extensions"
-            artifactId = "services"
-            version = "2.2.3"
+afterEvaluate {
+    publishing {
+        publications {
+            register("mavenJava", MavenPublication::class) {
+                groupId = "com.github.Zhuinden.simple-stack-extensions"
+                artifactId = "services"
+                version = "2.2.3"
 
-            artifact("$buildDir/outputs/aar/${artifactId}-release.aar")
-            artifact(sourcesJar.get())
+                from(components["release"])
+                artifact(sourcesJar.get())
 
-            pom {
-                withXml {
-                    val dependenciesNode = asNode().appendNode("dependencies")
-                    configurations.getByName("implementation") {
-                        dependencies.forEach {
-                            val dependencyNode = dependenciesNode.appendNode("dependency")
-                            dependencyNode.appendNode("groupId", it.group)
-                            dependencyNode.appendNode("artifactId", it.name)
-                            dependencyNode.appendNode("version", it.version)
+                pom {
+                    withXml {
+                        val dependenciesNode = asNode().appendNode("dependencies")
+                        configurations.getByName("implementation") {
+                            dependencies.forEach {
+                                val dependencyNode = dependenciesNode.appendNode("dependency")
+                                dependencyNode.appendNode("groupId", it.group)
+                                dependencyNode.appendNode("artifactId", it.name)
+                                dependencyNode.appendNode("version", it.version)
+                            }
                         }
-                    }
-                    configurations.getByName("api") {
-                        dependencies.forEach {
-                            val dependencyNode = dependenciesNode.appendNode("dependency")
-                            dependencyNode.appendNode("groupId", it.group)
-                            dependencyNode.appendNode("artifactId", it.name)
-                            dependencyNode.appendNode("version", it.version)
+                        configurations.getByName("api") {
+                            dependencies.forEach {
+                                val dependencyNode = dependenciesNode.appendNode("dependency")
+                                dependencyNode.appendNode("groupId", it.group)
+                                dependencyNode.appendNode("artifactId", it.name)
+                                dependencyNode.appendNode("version", it.version)
+                            }
                         }
                     }
                 }
