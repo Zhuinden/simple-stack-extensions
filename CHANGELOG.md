@@ -2,9 +2,16 @@
 
 -Simple Stack Extensions 2.2.3 (2022-04-21)
 --------------------------------
-- No significant changes.
 
 - Update simple-stack to 2.6.3.
+
+- Update Kotlin to 1.5.32.
+
+- Replace `android-maven` plugin with `maven-publish`.
+
+- Update transitive AndroidX dependencies.
+
+AndroidX demands compileSdkVersion 31, so the library also updated to compileSdkVersion 31.
 
 -Simple Stack Extensions 2.2.2 (2021-06-07)
 --------------------------------

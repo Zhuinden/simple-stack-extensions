@@ -3,7 +3,7 @@ plugins {
 }
 
 android {
-    compileSdkVersion(30)
+    compileSdkVersion(31)
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId = "com.example.fragmenttransitions"
         minSdkVersion(16)
-        targetSdkVersion(30)
+        targetSdkVersion(31)
         versionCode = 1
         versionName = "1.0"
     }
@@ -47,11 +47,4 @@ dependencies {
     annotationProcessor("com.github.reggar:auto-value-ignore-hash-equals:1.1.4")
     implementation("com.google.dagger:dagger:2.29.1")
     annotationProcessor("com.google.dagger:dagger-compiler:2.29.1")
-}
-
-configurations.compile.get().dependencies.forEach { compileDependency ->
-    println("Excluding implementation dependency: ${compileDependency.name}")
-    configurations.androidTestCompile.get().dependencies.forEach {
-        configurations.androidTestCompile.get().exclude(module = compileDependency.name)
-    }
 }
