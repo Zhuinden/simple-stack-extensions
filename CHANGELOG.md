@@ -1,5 +1,16 @@
 # Change log
 
+-Simple Stack Extensions 2.2.5 (2022-11-11)
+--------------------------------
+
+- Update simple-stack to 2.6.5.
+
+- Update transitive AndroidX dependencies.
+
+- Update Kotlin to 1.7.10.
+
+AndroidX demands compileSdkVersion 33, so the library is also updated to compileSdkVersion 33. 
+
 -Simple Stack Extensions 2.2.4 (2022-04-21)
 --------------------------------
 

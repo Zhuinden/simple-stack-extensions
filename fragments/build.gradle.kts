@@ -4,10 +4,10 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.2.4"
+version = "2.2.5"
 
 android {
-    compileSdkVersion(31)
+    compileSdkVersion(33)
 
     defaultConfig {
         minSdkVersion(16)
@@ -37,11 +37,11 @@ dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
 
-    api("com.github.Zhuinden:simple-stack:2.6.4") {
+    api("com.github.Zhuinden:simple-stack:2.6.5") {
         isTransitive = true
     }
-    api("androidx.fragment:fragment:1.4.1")
-    api("androidx.core:core:1.7.0")
+    api("androidx.fragment:fragment:1.5.4")
+    api("androidx.core:core:1.9.0")
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.assertj:assertj-core:3.16.1")
@@ -85,7 +85,7 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "fragments"
-                version = "2.2.4"
+                version = "2.2.5"
 
                 from(components["release"])
                 artifact(sourcesJar.get())
