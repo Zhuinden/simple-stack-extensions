@@ -1,0 +1,25 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml:17:1-19:7
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml:17:1-19:7
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml:17:1-19:7
+	package
+		ADDED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml:18:5-62
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml:17:1-19:7
+uses-sdk
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+		ADDED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+		ADDED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml
+		INJECTED from D:\Work\HomeProjects\simple-stack-extensions\lifecycle-ktx\src\main\AndroidManifest.xml

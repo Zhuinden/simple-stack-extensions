@@ -5,14 +5,9 @@ import android.view.View
 import com.zhuinden.simplestackextensions.fragments.KeyedFragment
 import com.zhuinden.simplestackextensions.fragmentsktx.lookup
 import com.zhuinden.simplestackextensionsample.R
-import com.zhuinden.simplestackextensionsample.utils.get
-import com.zhuinden.simplestackextensionsample.utils.onClick
-import com.zhuinden.simplestackextensionsample.utils.onTextChanged
-import com.zhuinden.simplestackextensionsample.utils.set
+import com.zhuinden.simplestackextensionsample.databinding.CreateLoginCredentialsFragmentBinding
+import com.zhuinden.simplestackextensionsample.utils.*
 import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.rxkotlin.addTo
-import io.reactivex.rxkotlin.subscribeBy
-import kotlinx.android.synthetic.main.create_login_credentials_fragment.*
 
 
 class CreateLoginCredentialsFragment : KeyedFragment(R.layout.create_login_credentials_fragment) {
@@ -23,16 +18,18 @@ class CreateLoginCredentialsFragment : KeyedFragment(R.layout.create_login_crede
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        textUsername.setText(viewModel.username.get())
-        textPassword.setText(viewModel.password.get())
+        val binding = CreateLoginCredentialsFragmentBinding.bind(view)
 
-        viewModel.isRegisterAndLoginEnabled.distinctUntilChanged().subscribeBy { enabled ->
-            buttonRegisterAndLogin.isEnabled = enabled
-        }.addTo(compositeDisposable)
+        binding.textUsername.setText(viewModel.username.get())
+        binding.textPassword.setText(viewModel.password.get())
 
-        textUsername.onTextChanged { username -> viewModel.username.set(username) }
-        textPassword.onTextChanged { password -> viewModel.password.set(password) }
-        buttonRegisterAndLogin.onClick { viewModel.onRegisterAndLoginClicked() }
+        viewModel.isRegisterAndLoginEnabled.observe(compositeDisposable) { enabled ->
+            binding.buttonRegisterAndLogin.isEnabled = enabled
+        }
+
+        binding.textUsername.onTextChanged { username -> viewModel.username.set(username) }
+        binding.textPassword.onTextChanged { password -> viewModel.password.set(password) }
+        binding.buttonRegisterAndLogin.onClick { viewModel.onRegisterAndLoginClicked() }
     }
 
     override fun onDestroyView() {

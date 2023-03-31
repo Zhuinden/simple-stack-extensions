@@ -1,52 +1,64 @@
 package com.zhuinden.simplestackextensionsample.app
 
-import android.content.Context
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
-import com.zhuinden.simplestack.GlobalServices
-import com.zhuinden.simplestack.History
-import com.zhuinden.simplestack.SimpleStateChanger
-import com.zhuinden.simplestack.StateChange
+import com.zhuinden.simplestack.*
 import com.zhuinden.simplestack.navigator.Navigator
 import com.zhuinden.simplestackextensions.fragments.DefaultFragmentStateChanger
+import com.zhuinden.simplestackextensions.lifecyclektx.observeAheadOfTimeWillHandleBackChanged
+import com.zhuinden.simplestackextensions.servicesktx.get
 import com.zhuinden.simplestackextensionsample.R
+import com.zhuinden.simplestackextensionsample.databinding.MainActivityBinding
 import com.zhuinden.simplestackextensionsample.features.login.LoginKey
 import com.zhuinden.simplestackextensionsample.features.profile.ProfileKey
-import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity(), SimpleStateChanger.NavigationHandler {
     private lateinit var fragmentStateChanger: DefaultFragmentStateChanger
-    private lateinit var appContext: Context
+    private lateinit var authenticationManager: AuthenticationManager
+
+    private lateinit var backstack: Backstack
+
+    private val backPressedCallback = object : OnBackPressedCallback(false) {
+        override fun handleOnBackPressed() {
+            backstack.goBack()
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+
+        val binding = MainActivityBinding.inflate(layoutInflater)
+
+        onBackPressedDispatcher.addCallback(backPressedCallback) // this is the reliable way to handle back for now
+
+        setContentView(binding.root)
 
         fragmentStateChanger = DefaultFragmentStateChanger(supportFragmentManager, R.id.step9Root)
-        appContext = applicationContext
 
-        Navigator.configure()
+        val app = application as CustomApplication
+
+        val globalServices = app.globalServices
+
+        authenticationManager = globalServices.get()
+
+        backstack = Navigator.configure()
+            .setBackHandlingModel(BackHandlingModel.AHEAD_OF_TIME)
             .setStateChanger(SimpleStateChanger(this))
             .setScopedServices(ServiceProvider())
-            .setGlobalServices(
-                GlobalServices.builder()
-                    .addService("appContext", appContext)
-                    .build()
-            )
+            .setGlobalServices(globalServices)
             .install(
-                this, step9Root, History.of(
+                this, binding.step9Root, History.of(
                     when {
-                        AuthenticationManager.isAuthenticated(appContext) -> ProfileKey()
-                        else -> LoginKey()
+                        authenticationManager.isAuthenticated() -> ProfileKey(authenticationManager.getAuthenticatedUser())
+                        else -> LoginKey
                     }
                 )
             )
-    }
 
-    override fun onBackPressed() {
-        if (!Navigator.onBackPressed(this)) {
-            super.onBackPressed()
-        }
+        backPressedCallback.isEnabled = backstack.willHandleAheadOfTimeBack()
+
+        backstack.observeAheadOfTimeWillHandleBackChanged(this, backPressedCallback::setEnabled)
     }
 
     override fun onNavigationEvent(stateChange: StateChange) {
@@ -55,7 +67,7 @@ class MainActivity : AppCompatActivity(), SimpleStateChanger.NavigationHandler {
 
     override fun onDestroy() {
         if (isFinishing) {
-            AuthenticationManager.clearRegistration(appContext) // just for sample repeat sake
+            authenticationManager.clearRegistration() // just for sample repeat sake
         }
 
         super.onDestroy()

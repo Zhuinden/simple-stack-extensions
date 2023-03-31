@@ -4,7 +4,7 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.2.5"
+version = "2.3.0"
 
 android {
     compileSdkVersion(33)
@@ -37,10 +37,10 @@ dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
 
-    api("com.github.Zhuinden:simple-stack:2.6.5") {
+    api("com.github.Zhuinden:simple-stack:2.7.0") {
         isTransitive = true
     }
-    api("androidx.annotation:annotation:1.3.0") // @CheckSuper
+    api("androidx.annotation:annotation:1.6.0") // @CheckSuper
 
     testImplementation("junit:junit:4.13.2")
     testImplementation("org.assertj:assertj-core:3.16.1")
@@ -84,7 +84,7 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "services"
-                version = "2.2.5"
+                version = "2.3.0"
 
                 from(components["release"])
                 artifact(sourcesJar.get())

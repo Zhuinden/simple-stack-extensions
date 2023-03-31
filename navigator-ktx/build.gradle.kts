@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.2.5"
+version = "2.3.0"
 
 android {
     compileSdkVersion(33)
@@ -37,7 +37,7 @@ android {
 dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
-    api("com.github.Zhuinden:simple-stack:2.6.5") {
+    api("com.github.Zhuinden:simple-stack:2.7.0") {
         isTransitive = true
     }
 
@@ -83,7 +83,7 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "navigator-ktx"
-                version = "2.2.5"
+                version = "2.3.0"
 
                 from(components["release"])
                 artifact(sourcesJar.get())

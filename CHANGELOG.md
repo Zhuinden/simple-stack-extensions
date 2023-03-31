@@ -1,5 +1,37 @@
 # Change log
 
+-Simple Stack Extensions 2.3.0 (2023-03-31)
+--------------------------------
+
+- Update simple-stack to 2.7.0.
+- 
+- New artifact: `lifecycle-ktx`.
+
+Currently, it allows lifecycle-aware observing of `AheadOfTimeWillHandleBackChangedListener` on a `Backstack`.
+
+It changes the code from this:
+
+```kotlin
+    backstack.addAheadOfTimeWillHandleBackChangedListener(updateBackPressedCallback)
+}
+
+override fun onDestroy() {
+    super.onDestroy()
+    backstack.removeAheadOfTimeWillHandleBackChangedListener(updateBackPressedCallback);
+}
+```
+
+to this:
+
+```kotlin
+backstack.observeAheadOfTimeWillHandleBackChanged(this, backPressedCallback::setEnabled)
+```
+
+- Update transitive AndroidX dependencies.
+
+- Update Kotlin to 1.8.10.
+
+
 -Simple Stack Extensions 2.2.5 (2022-11-11)
 --------------------------------
 

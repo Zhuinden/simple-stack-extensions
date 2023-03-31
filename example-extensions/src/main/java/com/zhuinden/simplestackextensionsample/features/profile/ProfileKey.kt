@@ -6,13 +6,13 @@ import com.zhuinden.simplestackextensions.fragments.DefaultFragmentKey
 import com.zhuinden.simplestackextensions.services.DefaultServiceProvider
 import com.zhuinden.simplestackextensions.servicesktx.add
 import com.zhuinden.simplestackextensions.servicesktx.lookup
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class ProfileKey(private val placeholder: String = "") : DefaultFragmentKey(), DefaultServiceProvider.HasServices {
+data class ProfileKey(val username: String) : DefaultFragmentKey(), DefaultServiceProvider.HasServices {
     override fun bindServices(serviceBinder: ServiceBinder) {
         with(serviceBinder) {
-            add(ProfileViewModel(lookup("appContext"), backstack))
+            add(ProfileViewModel(lookup(), backstack))
         }
     }
 

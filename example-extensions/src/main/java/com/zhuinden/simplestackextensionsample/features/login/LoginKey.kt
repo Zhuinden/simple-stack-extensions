@@ -6,13 +6,13 @@ import com.zhuinden.simplestackextensions.fragments.DefaultFragmentKey
 import com.zhuinden.simplestackextensions.services.DefaultServiceProvider
 import com.zhuinden.simplestackextensions.servicesktx.add
 import com.zhuinden.simplestackextensions.servicesktx.lookup
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class LoginKey(private val placeholder: String = "") : DefaultFragmentKey(), DefaultServiceProvider.HasServices {
+data object LoginKey : DefaultFragmentKey(), DefaultServiceProvider.HasServices {
     override fun bindServices(serviceBinder: ServiceBinder) {
         with(serviceBinder) {
-            add(LoginViewModel(lookup("appContext"), backstack))
+            add(LoginViewModel(lookup(), backstack))
         }
     }
 

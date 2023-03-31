@@ -1,0 +1,2 @@
+com/zhuinden/simplestackextensions/corektx/BuildConfig.java
+ com.zhuinden.simplestackextensions.corektx.BuildConfig
