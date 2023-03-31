@@ -14,6 +14,10 @@ projectFilesBackup
 # Project exclude paths
 /fragments-ktx/build/
 /fragments-ktx/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/
+/core-ktx/build/
+/core-ktx/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/
+/lifecycle-ktx/build/
+/lifecycle-ktx/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/
 /navigator-ktx/build/
 /navigator-ktx/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes/
 /services/build/
