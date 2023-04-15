@@ -1,5 +1,10 @@
 # Change log
 
+-Simple Stack Extensions 2.3.2 (2023-04-15)
+--------------------------------
+
+- Add `Fragment.lookupFrom(scopeTag, ...)` to `fragments-ktx`.
+
 -Simple Stack Extensions 2.3.1 (2023-04-15)
 --------------------------------
 
