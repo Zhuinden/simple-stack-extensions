@@ -1,5 +1,10 @@
 # Change log
 
+-Simple Stack Extensions 2.3.1 (2023-04-15)
+--------------------------------
+
+- Add `Backstack.canFindFrom(scopeTag, ...)` and `Backstack.lookupFrom(scopeTag, ...)` to `services-ktx`.
+
 -Simple Stack Extensions 2.3.0 (2023-03-31)
 --------------------------------
 

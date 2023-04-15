@@ -15,9 +15,7 @@
  */
 package com.zhuinden.simplestackextensions.servicesktx
 
-import com.zhuinden.simplestack.Backstack
-import com.zhuinden.simplestack.GlobalServices
-import com.zhuinden.simplestack.ServiceBinder
+import com.zhuinden.simplestack.*
 
 /**
  * Check if the given service can be found via lookup.
@@ -32,6 +30,35 @@ inline fun <reified T: Any> Backstack.canFind(serviceTag: String = T::class.java
  * Uses the fully qualified name of the class as the default tag.
  */
 inline fun <reified T: Any> Backstack.lookup(serviceTag: String = T::class.java.name): T = lookupService<T>(serviceTag)
+
+
+/**
+ * Check if the given service can be found via lookup from the specified scope, with the specified lookup mode.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T: Any> Backstack.canFindFrom(scopeTag: String, serviceTag: String = T::class.java.name, scopeLookupMode: ScopeLookupMode = ScopeLookupMode.ALL): Boolean = canFindFromScope(scopeTag, serviceTag, scopeLookupMode)
+
+/**
+ * Look up the service using the provided service tag from the specified scope, with the specified lookup mode.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T: Any> Backstack.lookupFrom(scopeTag: String, serviceTag: String = T::class.java.name, scopeLookupMode: ScopeLookupMode = ScopeLookupMode.ALL): T = lookupFromScope<T>(scopeTag, serviceTag, scopeLookupMode)
+
+/**
+ * Check if the given service can be found via lookup from the specified scope, with the specified lookup mode.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T: Any> Backstack.canFindFrom(scopeKey: ScopeKey, serviceTag: String = T::class.java.name, scopeLookupMode: ScopeLookupMode = ScopeLookupMode.ALL): Boolean = canFindFrom<T>(scopeKey.scopeTag, serviceTag, scopeLookupMode)
+
+/**
+ * Look up the service using the provided service tag from the specified scope, with the specified lookup mode.
+ *
+ * Uses the fully qualified name of the class as the default tag.
+ */
+inline fun <reified T: Any> Backstack.lookupFrom(scopeKey: ScopeKey, serviceTag: String = T::class.java.name, scopeLookupMode: ScopeLookupMode = ScopeLookupMode.ALL): T = lookupFrom<T>(scopeKey.scopeTag, serviceTag, scopeLookupMode)
 
 /**
  * Add the service to the service binder in the given scope.

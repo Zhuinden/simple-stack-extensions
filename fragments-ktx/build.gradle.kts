@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.3.0"
+version = "2.3.1"
 
 android {
     compileSdkVersion(33)
@@ -86,7 +86,7 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "fragments-ktx"
-                version = "2.3.0"
+                version = "2.3.1"
 
                 from(components["release"])
                 artifact(sourcesJar.get())
