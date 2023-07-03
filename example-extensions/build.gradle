@@ -50,7 +50,7 @@ dependencies {
     api(project(":services"))
     api(project(":services-ktx"))
 
-    implementation('com.github.Zhuinden:simple-stack:2.7.0') {
+    implementation('com.github.Zhuinden:simple-stack:2.8.0') {
         transitive = true
     }
 
