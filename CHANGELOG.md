@@ -1,5 +1,10 @@
 # Change log
 
+-Simple Stack Extensions 2.3.5 (2025-12-25)
+--------------------------------
+
+- Update simple-stack to 2.9.1.
+
 -Simple Stack Extensions 2.3.4 (2024-05-06)
 --------------------------------
 

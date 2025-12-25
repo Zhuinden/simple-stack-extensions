@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "com.github.Zhuinden.simple-stack-extensions"
-version = "2.3.4"
+version = "2.3.5"
 
 android {
     compileSdkVersion(33)
@@ -38,7 +38,7 @@ dependencies {
     //implementation(mapOf("dir" to "libs", "include" to listOf("*.jar")))
     api("com.google.code.findbugs:jsr305:3.0.2")
     api("androidx.lifecycle:lifecycle-common:2.5.1")
-    api("com.github.Zhuinden:simple-stack:2.9.0") {
+    api("com.github.Zhuinden:simple-stack:2.9.1") {
         isTransitive = true
     }
     testImplementation("junit:junit:4.13.2")
@@ -83,7 +83,7 @@ afterEvaluate {
             register("mavenJava", MavenPublication::class) {
                 groupId = "com.github.Zhuinden.simple-stack-extensions"
                 artifactId = "lifecycle-ktx"
-                version = "2.3.4"
+                version = "2.3.5"
 
                 from(components["release"])
                 artifact(sourcesJar.get())
